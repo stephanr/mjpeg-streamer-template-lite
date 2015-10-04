@@ -1,0 +1,36 @@
+/*
+ * bootstrap navbar 
+ */
+body {
+  padding-top: 70px;
+}
+
+/*
+ * button icons
+ */
+.btn-icon {
+	width: 16px;
+	padding-right: 20px;
+}
+#rotate .btn-icon {
+	background:url("rotate16.png") no-repeat left center;
+}
+#flip .btn-icon {
+	background:url("flip16.png") no-repeat left center;
+}
+#mirror .btn-icon {
+	background:url("mirror16.png") no-repeat left center;
+}
+#refresh .btn-icon {
+	background:url("refresh16.png") no-repeat left center;
+}
+
+/*
+ * image
+ */
+#streamimage {
+	position: relative;
+	left: 0;
+	top: 0;
+	max-width:100%;
+}
