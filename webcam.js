@@ -39,17 +39,58 @@ function fmtDateNum(val) {
 }
 
 $(document).ready(function () {
+	// reload cookie state
+	var fromcookie = 0;
+	if( Cookies.get('mirrored') === '1' ){
+		mirrored = 1;
+		fromcookie = 1;
+	}
+	if( Cookies.get('flipped') === '1' ){
+		flipped = 1;
+		fromcookie = 1;
+	}
+	switch (Cookies.get('rotation')){
+		case '90':
+			rotation = 90;
+			fromcookie = 1;
+			break;
+		case '180':
+			rotation = 180;
+			fromcookie = 1;
+			break;
+		case '270':
+			rotation = 270;
+			fromcookie = 1;
+			break;
+	}
+	if ( fromcookie === 1 ) {
+		applyCssTransform();
+	}
+	
 	// assing button functions
 	$('#rotate').click(function () {
 		rotation = (rotation + 90) % 360;
+		switch (rotation){
+			case 90:
+				Cookies.set('rotation', '90');
+				break;
+			case 180:
+				Cookies.set('rotation', '180');
+				break;
+			case 270:
+				Cookies.set('rotation', '270');
+				break;
+		}
 		applyCssTransform();
 	});
 	$('#mirror').click(function () {
 		mirrored = !mirrored;
+		Cookies.set('mirrored', mirrored ? '1' : '0' );
 		applyCssTransform();
 	});
 	$('#flip').click(function () {
 		flipped = !flipped;
+		Cookies.set('flipped', flipped ? '1' : '0' );
 		applyCssTransform();
 	});
 	$('#refresh').click(function () {
